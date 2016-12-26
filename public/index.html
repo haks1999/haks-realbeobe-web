@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Real Best Of Best</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/font-awesome.min.css" crossorigin="anonymous">
+    <link href="static/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="static/css/bootstrap-multiselect.css" rel="stylesheet">
+    <link href="static/css/realbeobe.css" rel="stylesheet">
+    <script src="static/js/ie-emulation-modes-warning.js"></script>
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Real Best of Best</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown" id="li_order">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span id="spn_currentOrder"></span> <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+              </ul>
+            </li>
+          </ul>
+          <ul id="ul_siteList" class="nav navbar-nav navbar-right" style="display:none;">
+            <select id="example-getting-started" multiple="multiple">
+              <option value="cheese">Cheese</option>
+              <option value="tomatoes">Tomatoes</option>
+              <option value="mozarella">Mozzarella</option>
+              <option value="mushrooms">Mushrooms</option>
+              <option value="pepperoni">Pepperoni</option>
+              <option value="onions">Onions</option>
+            </select>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+
+        <section class="content">
+          <h1>Table Filter</h1>
+          <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="pull-right">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-default btn-filter">최신순</button>
+                    <button type="button" class="btn btn-default btn-filter">조회순</button>
+                    <button type="button" class="btn btn-default btn-filter">댓글순</button>
+                    <button type="button" class="btn btn-default btn-filter">추천순</button>
+                  </div>
+                </div>
+                <div class="table-container">
+                  <table id="tbl_postList" class="table table-filter">
+                    <tbody>
+                    <tr class="template">
+                      <td>
+                        <div class="media">
+                          <a href="#" class="pull-left">
+                            <img src="" class="media-photo">
+                          </a>
+                          <div class="media-body">
+                            <p>
+                              <a href="" class="title"></a>
+                              <i class="fa fa-image"></i>
+                            </p>
+                            <p class="summary">
+                              <span class="media-meta pull-left">
+                                <i class="fa fa-eye"></i> <span class="view_cnt"></span>
+                                <i class="fa fa-thumbs-o-up"></i> <span class="good_cnt"></span>
+                                <i class="fa fa-comment-o"></i> <span class="comment_cnt"></span>
+                              </span>
+                              <span class="reg_dt media-meta pull-right"></span>
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="content-footer">
+              <p>
+                Page © - 2016 <br>
+                Powered By <a href="https://www.facebook.com/tavo.qiqe.lucero" target="_blank">TavoQiqe</a>
+              </p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="static/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="static/js/moment-with-locales.min.js"></script>
+    <script src="static/js/bootstrap-multiselect.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            var siteUrl = {
+                "TH": "http://www.todayhumor.co.kr",
+                "HU": "http://web.humoruniv.com"
+            };
+
+            var sitePostHeaderUrl = {
+                "TH": siteUrl["TH"],
+                "HU": siteUrl["HU"] + "/board/humor/"
+            };
+
+            var orderCode = {
+                "rd": "최신순",
+                "vc": "조회순",
+                "gc": "추천순",
+                "cc": "댓글순"
+            };
+
+            $('#example-getting-started').multiselect();
+            $('#ul_siteList').show();
+
+            $("#spn_currentOrder").text(orderCode[Object.keys(orderCode)[0]]).data('s', Object.keys(orderCode)[0]);
+            for(var key in orderCode) {
+                $("#li_order .dropdown-menu").append('<li><a href="#" data-s="' + key + '">' + orderCode[key]+ '</a></li>');
+            };
+
+            var getPostList = function(){
+
+                var params = {
+                    s: $("#spn_currentOrder").data('s'),
+                    p:1,
+                    scl:'HU,TH'
+                };
+
+                $('#tbl_postList tr.data').remove();
+
+                $.getJSON('/posts', params, function(data){
+                    data.forEach(function(post){
+                        var clonedRow = $('#tbl_postList .template').clone();
+                        $(clonedRow).removeClass('template').addClass("data");
+                        $(clonedRow).find('.title').text(post.title + ' ').attr("href",sitePostHeaderUrl[post.site_cd] + post.link);
+                        //$(clonedRow).find('.site_cd').contents().last().replaceWith(post.site_cd);
+
+                        var localTime  = moment.utc(post.reg_dt).toDate();
+                        localTime = moment(localTime).format('YYYY-MM-DD HH:mm:ss');
+
+                        $(clonedRow).find('.reg_dt').text(localTime);
+                        $(clonedRow).find('.view_cnt').text(' '+post.view_cnt);
+                        $(clonedRow).find('.good_cnt').text(' '+post.good_cnt);
+                        $(clonedRow).find('.comment_cnt').text(' '+post.comment_cnt);
+
+                        $(clonedRow).find('div.media a img').attr('src', siteUrl[post.site_cd] + "/favicon.ico");
+                        $('#tbl_postList tbody').append(clonedRow);
+                    });
+                });
+            };
+            getPostList();
+
+            $("#li_order .dropdown-menu li a").click(function(){
+                $("#spn_currentOrder").text($(this).text()).data('s', $(this).data('s'));
+                getPostList();
+            });
+        });
+
+
+
+    </script>
+  </body>
+</html>
