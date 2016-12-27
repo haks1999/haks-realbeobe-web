@@ -40,7 +40,9 @@ var COMMON_CODE = {
 };
 
 var postListQuery = 'SELECT post_id, site_cd, site_post_id, title, link, comment_cnt, view_cnt, good_cnt, reg_dt FROM tb_m_post ' +
-    'WHERE site_cd IN (:siteCodeList) ORDER BY :order DESC LIMIT :offset, 50';
+    'WHERE site_cd IN (:siteCodeList) ORDER BY :order DESC LIMIT :offset, 20';
+var postCountQuery = 'SELECT count(*) count FROM tb_m_post ' +
+    'WHERE site_cd IN (:siteCodeList)';
 app.get('/posts',function(req,res){
     var pageNumber = req.query['p'];
     var sort = req.query['s'];
@@ -52,13 +54,25 @@ app.get('/posts',function(req,res){
 
     var postListQueryBinded = postListQuery.replace(':siteCodeList',"'"+siteCodeList.split(',').join("','")+"'");
     postListQueryBinded = postListQueryBinded.replace(':order', COMMON_CODE.SORT[sort]);
-    postListQueryBinded = postListQueryBinded.replace(':offset', (pageNumber-1)*50);
+    postListQueryBinded = postListQueryBinded.replace(':offset', (pageNumber-1)*20);
+
+    var postCountQueryBinded = postCountQuery.replace(':siteCodeList',"'"+siteCodeList.split(',').join("','")+"'");
 
     console.log(postListQueryBinded);
+
     pool.getConnection(function(err, connection) {
-        connection.query( postListQueryBinded, function(err, rows) {
-            connection.release();
-            res.json(rows);
+        if(err) res.json({});
+        connection.query( postCountQueryBinded, function(err, countResult){
+            if(err) res.json({});
+            connection.query( postListQueryBinded, function(err, listResult) {
+                if(err) res.json({});
+                connection.release();
+                res.json({
+                    totalCount: countResult[0].count,
+                    postList: listResult
+                });
+            });
         });
+
     });
 });

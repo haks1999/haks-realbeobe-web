@@ -115,7 +115,6 @@ body {
   margin-right:5px;
 }
 .table-filter .media .title {
-  color: #2BBCDE;
   font-size: 14px;
   font-weight: bold;
   line-height: normal;
@@ -138,6 +137,10 @@ body {
   font-size: 14px;
 }
 
-table tr.template {
+.template{
   display: none;
+}
+
+.media-checkbox {
+  width: 10px;
 }
