@@ -213,10 +213,7 @@
                     $(clonedRow).find('.title').text(post.title + ' ').attr("href",sitePostHeaderUrl[post.site_cd] + post.link);
                     //$(clonedRow).find('.site_cd').contents().last().replaceWith(post.site_cd);
 
-                    var localTime  = moment.utc(post.reg_dt).toDate();
-                    localTime = moment(localTime).format('YYYY-MM-DD HH:mm');
-
-                    $(clonedRow).find('.reg_dt').text(localTime);
+                    $(clonedRow).find('.reg_dt').text(post.reg_dt);
                     $(clonedRow).find('.view_cnt').text(' '+post.view_cnt);
                     $(clonedRow).find('.good_cnt').text(' '+post.good_cnt);
                     $(clonedRow).find('.comment_cnt').text(' '+post.comment_cnt);

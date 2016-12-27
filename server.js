@@ -39,7 +39,7 @@ var COMMON_CODE = {
     }
 };
 
-var postListQuery = 'SELECT post_id, site_cd, site_post_id, title, link, comment_cnt, view_cnt, good_cnt, reg_dt FROM tb_m_post ' +
+var postListQuery = "SELECT post_id, site_cd, site_post_id, title, link, comment_cnt, view_cnt, good_cnt, DATE_FORMAT(reg_dt,'%Y-%m-%d %H:%i') reg_dt FROM tb_m_post " +
     'WHERE site_cd IN (:siteCodeList) ORDER BY :order DESC LIMIT :offset, 20';
 var postCountQuery = 'SELECT count(*) count FROM tb_m_post ' +
     'WHERE site_cd IN (:siteCodeList)';
