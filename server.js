@@ -21,7 +21,7 @@ app.listen(9000, function () {
 
 
 app.get('/',function(req,res){
-    res.sendFile(path.join(__dirname + '/public/index.html'));
+    res.sendFile(path.join(__dirname + '/public/index_old.html'));
 });
 
 

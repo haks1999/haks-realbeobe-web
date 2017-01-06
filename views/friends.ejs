@@ -1,0 +1,54 @@
+<%- include('header-system') %>
+
+<body>
+
+
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Login</h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="container col-md-6 col-md-offset-2">
+                    <a id="kakao-login-btn"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<%- include('footer-system') %>
+<script type="text/javascript">
+        Kakao.init('fdefdff26752e762e5b4697958468af0');
+        // 카카오 로그인 버튼을 생성합니다.
+        Kakao.Auth.createLoginButton({
+            container: '#kakao-login-btn',
+            success: function(authObj) {
+                // authObj.access_token
+                // Kakao.Auth.getAccessToken()
+                // Kakao.Auth.getAppKey()
+                //localStorage.setItem("access_token", authObj.access_token);
+
+                Kakao.API.request({
+                    url: '/v1/user/me',
+                    success: function(res) {
+                        // res.properties.nickname
+                        // res.id
+                        console.log(res);
+                    },
+                    fail: function(error) {
+                        alert(JSON.stringify(error));
+                    }
+                });
+
+            },
+            fail: function(err) {
+                alert(JSON.stringify(err));
+            }
+        });
+</script>
+
+</body>
