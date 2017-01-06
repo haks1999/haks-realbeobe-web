@@ -29,6 +29,7 @@ var COMMON_CODE = {
     SITE : {
         'HU':'humoruniv',
         'TH':'todayhumor',
+        'RW':'ruliweb',
         'BD':'bobaedream'
     },
     SORT : {
